@@ -1,8 +1,10 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Register = () => {
+    const [nameError, setNameError] = useState('')
+
 
     const { createUser, setUser } = use(AuthContext)
 
@@ -13,6 +15,11 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
+        if (name.length < 5) {
+            setNameError('Name should be more than 6 characters');
+            return
+        }
+
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -34,6 +41,7 @@ const Register = () => {
                         {/* Name */}
                         <label className="label">Name</label>
                         <input type="text" className="input" placeholder="Your Name" name='name' required />
+                        {nameError && <small className='text-red-500'>{nameError}</small>}
                         {/* Photo URL */}
                         <label className="label">Photo URL</label>
                         <input type="text" className="input" placeholder="Phot URL" name='photo' required />
