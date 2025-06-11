@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { FaRegBookmark, FaShareAlt, FaStar, FaEye } from "react-icons/fa";
 
 const NewsCard = ({ news }) => {
-    const [showAll, setShowAll] = useState(false);
-
-    const handleReadMore = () => {
-        setShowAll(true);
-    };
 
     const {
         title,
@@ -57,21 +52,12 @@ const NewsCard = ({ news }) => {
                 {/* Details */}
                 <div className=" py-3 text-gray-700 text-sm">
                     <p>
-                        {showAll
-                            ? details
-                            : details.length > 200
-                                ? details.slice(0, 200) + "..."
-                                : details}
-
-                        {/* Show Read More button only if details is long and not fully shown yet */}
-                        {details.length > 200 && (
-                            <span
-                                onClick={() => setShowAll(!showAll)}
-                                className="text-orange-600 font-semibold cursor-pointer ml-1"
-                            >
-                                {showAll ? "Show Less" : "Read More"}
-                            </span>
-                        )}
+                        {details.length > 200 ? details.slice(0, 200) + "..." : details}
+                        <span
+                            className="text-orange-600 font-semibold cursor-pointer ml-1"
+                        >
+                            Read more
+                        </span>
                     </p>
                 </div>
 
