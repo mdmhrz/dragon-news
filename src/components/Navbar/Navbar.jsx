@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <div className='grid grid-cols-3 gap-3'>
             <div className=''></div>
-            <div className='flex gap-4 items-center justify-center'>
+            <div className='flex gap-10 items-center justify-center'>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
                 <NavLink to='/career'>Career</NavLink>
